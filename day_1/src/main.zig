@@ -1,4 +1,5 @@
 const std = @import("std");
+const root = @import("root.zig");
 
 fn lessThan(context: void, a: i64, b: i64) std.math.Order {
     _ = context;
@@ -8,6 +9,9 @@ fn lessThan(context: void, a: i64, b: i64) std.math.Order {
 pub fn main() !void {
     var file = try std.fs.cwd().openFile("input.txt", .{});
     defer file.close();
+
+    const v = root.add(1, 2);
+    std.debug.print("{}\n", .{v});
 
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
     const allocator = gpa.allocator();
